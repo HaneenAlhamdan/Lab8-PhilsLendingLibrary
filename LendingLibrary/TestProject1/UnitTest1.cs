@@ -41,12 +41,22 @@ namespace TestProject1
             Assert.Contains(book, library);
         }
         [Fact]
-        public void TestBackpack()
+        public void TestpackBackpack()
         {
             Backpack<string> backpack = new Backpack<string>();
             string str = "Erica";
             backpack.Pack(str);
             Assert.Contains(str, backpack);
         }
+        [Fact]
+        
+         public void TestUnpackBackpack()
+         {
+            Backpack<Book> backpack = new Backpack<Book>();
+            Book book = new Book("Fear of Flying", "Erica", "Jong", 400);
+            backpack.Pack(book);
+            backpack.Unpack(0);
+            Assert.DoesNotContain(book, backpack);
+         }
     }
 }
