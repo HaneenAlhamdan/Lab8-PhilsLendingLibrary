@@ -7,66 +7,41 @@ using System.Threading.Tasks;
 
 namespace LendingLibrary
 {
-    internal class Library: ILibrary
+    public class Library: ILibrary
     {
-        private Dictionary<string, Book> keyValuePairs = new Dictionary<string, Book>();
+        private Dictionary<string, Book> Dictionary = new Dictionary<string, Book>();
 
-        int count = 0;
-
-        public int Count => throw new NotImplementedException();
+        public int Count { set; get; }
 
         public void Add(string title, string firstName, string lastName, int numberOfPages)
         {
-            Book book = new Book();
-            book.Title = title;
-            book.Author = firstName + lastName;
-            book.NumberOfPages = numberOfPages;
-            keyValuePairs.Add(title, book);
-            count++;
-        }
-        public bool Remove(string title)
-        {
-            if (keyValuePairs.ContainsKey(title))
-            {
-                keyValuePairs.Remove(title);
-                count--;
-                return true;
-
-            } else
-            {
-                return false;
-            }
-
+            Dictionary.Add(title, new Book(title, firstName, lastName, numberOfPages));
+            Count++;
         }
         public Book Borrow(string title)
         {
             // checking book dictionary and return it  
-            if (keyValuePairs.ContainsKey(title))
+            if (Dictionary.ContainsKey(title))
             {
-                count--;
-                return keyValuePairs[title];
+                Book book = Dictionary[title];
+                Dictionary.Remove(title);
+                Count--;
+                return book;
             } else
             {
                 return null;
             }
 
         }
-        public int Return(Book book)
+        public void Return(Book book)
         {
-            if (keyValuePairs.TryGetValue(book.Title, out Book book1))
-            {
-                keyValuePairs[book.Title] = book1;
-                count++;
-                return count;
-            } else
-            {
-                return 0;
-            }
+            Dictionary.Add(book.Title, book);
+            Count++;
         }
 
         public IEnumerator<Book> GetEnumerator()
         {
-            foreach (Book book in keyValuePairs.Values)
+            foreach (Book book in Dictionary.Values)
                 yield return book;
         }
 

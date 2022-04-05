@@ -22,31 +22,5 @@ namespace LendingLibrary
         /// <returns>The item that was removed.</returns>
         T Unpack(int index);
     }
-    class IBag2<T> : IBag<T>
-    {
-        private List<T> _items = new List<T>();
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            foreach (T item in _items)
-                yield return item;
-        }
-
-        public void Pack(T item)
-        {
-            _items.Add(item);
-        }
-
-        public T Unpack(int index)
-        {
-            T item = _items[index];
-            _items.RemoveAt(index);
-            return item;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    }
+  
 }
