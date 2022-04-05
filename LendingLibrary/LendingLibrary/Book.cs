@@ -9,13 +9,17 @@ namespace LendingLibrary
     public class Book
     {
         public string Title { get; set; }
-        public string Author { get; set; }
-        public int NumberOfPages {get; set;}
-
-        public override string ToString()
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int NumberOfPages { get; set; }
+        public Book(string title, string firstName, string lastName, int numberOfPages)
         {
-            return $"{Title} {Author} {NumberOfPages}";
+
+            this.Title = title;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.NumberOfPages = numberOfPages;
+
         }
-         
     }
 }

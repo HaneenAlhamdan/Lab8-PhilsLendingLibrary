@@ -7,10 +7,9 @@ namespace LendingLibrary
     {
         static void Main(string[] args)
         {
-            Library books = new Library();
-            books.Add("Fear of Flying", "Erica", "Jong", 400);
-    }
+            
+        }
 
-
+      
 }
 }
