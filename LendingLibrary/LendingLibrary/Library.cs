@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LendingLibrary
 {
-    public class Library: ILibrary
+    public class Library<T>: ILibrary
     {
         private Dictionary<string, Book> Dictionary = new Dictionary<string, Book>();
 
