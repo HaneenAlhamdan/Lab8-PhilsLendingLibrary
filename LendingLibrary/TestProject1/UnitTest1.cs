@@ -10,7 +10,7 @@ namespace TestProject1
         [Fact]
         public void TestAddBook()
         {
-            Library library = new Library();
+            Library<Book> library = new Library<Book>();
             Book book = new Book("Fear of Flying", "Erica", "Jong", 400);
             Assert.Equal("Fear of Flying", book.Title);
         }
@@ -18,7 +18,7 @@ namespace TestProject1
         [Fact]
         public void TestBorrowingNotExisting()
         {
-            Library library = new Library();
+            Library<Book> library = new Library<Book>();
             Book book = new Book("Fear of Flying", "Erica", "Jong", 400);
             library.Return(book);
             library.Borrow("Fear of Flying");
@@ -27,7 +27,7 @@ namespace TestProject1
         [Fact]
         public void TestBorrowingExisting()
         {
-            Library library = new Library();
+            Library<Book> library = new Library<Book>();
             Book book = new Book("Fear of Flying", "Erica", "Jong", 400);
             library.Return(book);
             Assert.Equal(book, library.Borrow("Fear of Flying"));
@@ -35,7 +35,7 @@ namespace TestProject1
         [Fact]
         public void TestBorrowing()
         {
-            Library library = new Library();
+            Library<Book> library = new Library<Book>();
             Book book = new Book("Fear of Flying", "Erica", "Jong", 400);
             library.Return(book);
             Assert.Contains(book, library);
