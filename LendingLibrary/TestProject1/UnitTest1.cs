@@ -54,8 +54,6 @@ namespace TestProject1
          {
             Backpack<Book> backpack = new Backpack<Book>();
             Book book = new Book("Fear of Flying", "Erica", "Jong", 400);
-            backpack.Pack(book);
-            backpack.Unpack(0);
             Assert.DoesNotContain(book, backpack);
          }
     }
